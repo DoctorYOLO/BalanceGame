@@ -8,6 +8,7 @@ public class InRoomChat : Photon.MonoBehaviour
     public Rect GuiRect = new Rect(0,0, 250,300);
     public bool IsVisible = true;
     public bool AlignBottom = false;
+	public GUISkin skin;
     public List<string> messages = new List<string>();
     private string inputLine = "";
     private Vector2 scrollPos = Vector2.zero;
@@ -18,12 +19,17 @@ public class InRoomChat : Photon.MonoBehaviour
     {
         if (this.AlignBottom)
         {
-            this.GuiRect.y = Screen.height - this.GuiRect.height;
+            //this.GuiRect.y = Screen.height - this.GuiRect.height;
+			//this.GuiRect.x = Screen.width - this.GuiRect.width;
+			this.GuiRect = new Rect (Screen.width - this.GuiRect.width, Screen.width - this.GuiRect.width, Screen.width, 300);
+			this.GuiRect.y = Screen.height - this.GuiRect.height;
+			this.GuiRect.x = Screen.width - this.GuiRect.width;
         }
     }
 
     public void OnGUI()
     {
+		GUI.skin = skin;
         if (!this.IsVisible || !PhotonNetwork.inRoom)
         {
             return;
