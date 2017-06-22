@@ -64,7 +64,7 @@ public class InRoomChat : Photon.MonoBehaviour
         GUILayout.BeginHorizontal();
         GUI.SetNextControlName("ChatInput");
         inputLine = GUILayout.TextField(inputLine);
-        if (GUILayout.Button("Send", GUILayout.ExpandWidth(false)))
+        if (GUILayout.Button("Отправить", GUILayout.ExpandWidth(false)))
         {
             this.photonView.RPC("Chat", PhotonTargets.All, this.inputLine);
             this.inputLine = "";

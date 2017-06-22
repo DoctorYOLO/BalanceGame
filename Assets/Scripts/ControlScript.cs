@@ -15,13 +15,19 @@ public class ControlScript : MonoBehaviour {
 	public PhotonView name;
 	public GameObject graphics;
 	public GameObject me;
+	public float mass;
+	public Rigidbody rb;
+
 
 	public bool isPause = false;
 
 	// Use this for initialization
 	void Awake () 
 	{
-		name.RPC ("updateName", PhotonTargets.AllBuffered, PhotonNetwork.playerName);
+		mass = Random.Range (1, 10);
+		//name.RPC ("updateName", PhotonTargets.AllBuffered, PhotonNetwork.playerName);
+		rb = GetComponent<Rigidbody>();
+		rb.mass = mass;
 	}
 	
 	// Update is called once per frame
